@@ -27,12 +27,5 @@
 			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 		</div>
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<h1 class="menu-toggle"><?php _e( 'Menu', 'first-edition' ); ?></h1>
-			<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'first-edition' ); ?></a>
-
-			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-		</nav><!-- #site-navigation -->
+		<?php get_search_form(); ?>
 	</header><!-- #masthead -->
-
-	<div id="content" class="site-content">
