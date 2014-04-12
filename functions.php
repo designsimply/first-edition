@@ -163,6 +163,9 @@ function first_edition_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+	$protocol = is_ssl() ? 'https' : 'http';
+	wp_enqueue_style( 'Quattrocento', "$protocol://fonts.googleapis.com/css?family=Quattrocento" );
+	wp_enqueue_style( 'QuattrocentoSans', "$protocol://fonts.googleapis.com/css?family=Quattrocentoi+Sans" );
 }
 add_action( 'wp_enqueue_scripts', 'first_edition_scripts' );
 
