@@ -41,40 +41,25 @@ button,
 input,
 select,
 textarea {
-	color: #404040;
-	font-family: sans-serif;
-	font-size: 16px;
-	font-size: 1.6rem;
+	font-family: "Quattrocento", serif;
 	line-height: 1.5;
 }
 h1, h2, h3, h4, h5, h6 {
-	clear: both;
+	font-family: "Quattrocento Sans", "Open Sans", sans-serif;
+	margin: 0;
 }
-p {
-	margin-bottom: 1.5em;
+a {
+	text-decoration: none;
 }
-b, strong {
-	font-weight: bold;
-}
-dfn, cite, em, i {
-	font-style: italic;
-}
-blockquote {
-	margin: 0 1.5em;
-}
-address {
-	margin: 0 0 1.5em;
+.main-navigation > div > ul > li > .children,
+.entry-meta,
+.entry-footer,
+.site-footer {
+	font-size: 80%;
 }
 pre {
-	background: #eee;
 	font-family: "Courier 10 Pitch", Courier, monospace;
-	font-size: 15px;
-	font-size: 1.5rem;
-	line-height: 1.6;
-	margin-bottom: 1.6em;
-	max-width: 100%;
-	overflow: auto;
-	padding: 1.6em;
+	padding: 1.2em;
 }
 code, kbd, tt, var {
 	font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
@@ -83,8 +68,8 @@ abbr, acronym {
 	border-bottom: 1px dotted #666;
 	cursor: help;
 }
-mark, ins {
-	background: #fff9c0;
+mark, ins, .highlight {
+	background: #ffc;
 	text-decoration: none;
 }
 sup,
@@ -100,12 +85,6 @@ sup {
 }
 sub {
 	top: .5ex;
-}
-small {
-	font-size: 75%;
-}
-big {
-	font-size: 125%;
 }
 
 /*--------------------------------------------------------------
