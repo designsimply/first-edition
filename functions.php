@@ -64,6 +64,17 @@ function first_edition_setup() {
 }
 endif; // first_edition_setup
 add_action( 'after_setup_theme', 'first_edition_setup' );
+ 
+/**
+ * Change the default image size to large on attachment pages.
+ */
+add_filter( 'prepend_attachment', 'first_edition_prepend_attachment', 10, 3 );
+function first_edition_prepend_attachment() {
+
+        $output = '<p>' . wp_get_attachment_link( $id, 'large' ) . '</p>';
+
+        return $output;
+}
 
 /**
  * Register widgetized area and update sidebar with default widgets.
