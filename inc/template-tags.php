@@ -122,6 +122,46 @@ function first_edition_categorized_blog() {
 	}
 }
 
+if ( ! function_exists( 'first_edition_comment' ) ) :
+/**
+ * Template for comments and pingbacks.
+ *
+ * Used as a callback by wp_list_comments() for displaying the comments.
+ *
+ * @since first-edition 1.0
+ */
+function first_edition_comment( $comment, $args, $depth ) {
+        $GLOBALS['comment'] = $comment;
+        switch ( $comment->comment_type ) :
+                case 'pingback' :
+                case 'trackback' :
+        ?>
+        <li class="post pingback">
+                <p><?php _e( 'Mentioned at ', 'first-edition' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'edit', 'photo-addict' ), '{', '}' ); ?></p>
+        <?php
+                        break;
+                default :
+        ?>
+        <li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+
+                <a href="<?php echo esc_url( get_comment_link() ); ?>"><?php echo get_avatar( $comment, 16, '', get_comment_date() . ' at ' . get_comment_time() ); ?></a>
+                <cite class="fn"><?php comment_author_link(); ?></cite>:
+
+                <?php if ( $comment->comment_approved == '0' ) { ?>
+                        <?php _e( 'Your comment will be reviewed soon.', 'first-edition' ) ?>
+                <?php } ?>
+
+                <?php comment_text(); ?>
+
+                <?php edit_comment_link( __( 'edit', 'first-edition' ), '{', '}' ); ?>
+                <?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'], 'reply_text' => 'reply' ) ) ); ?> 
+
+        <?php
+                        break;
+        endswitch;
+}
+endif; // end check for first_edition_comment()
+
 /**
  * Flush out the transients used in first_edition_categorized_blog.
  */

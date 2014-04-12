@@ -23,13 +23,7 @@ if ( post_password_required() ) {
 	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title">
-			<?php
-				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'first-edition' ),
-					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
-			?>
-		</h2>
-
+		<hr />
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-above" class="comment-navigation" role="navigation">
 			<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'first-edition' ); ?></h2>
@@ -39,12 +33,7 @@ if ( post_password_required() ) {
 		<?php endif; // check for comment navigation ?>
 
 		<ol class="comment-list">
-			<?php
-				wp_list_comments( array(
-					'style'      => 'ol',
-					'short_ping' => true,
-				) );
-			?>
+			<?php wp_list_comments( array( 'callback' => 'first_edition_comment', 'format' => 'html5' ) ); ?>
 		</ol><!-- .comment-list -->
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
