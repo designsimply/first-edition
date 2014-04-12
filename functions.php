@@ -64,6 +64,49 @@ function first_edition_setup() {
 }
 endif; // first_edition_setup
 add_action( 'after_setup_theme', 'first_edition_setup' );
+
+/**
+ * Filter previous/next links to loop back to the parent
+ */
+add_filter( 'previous_post_link', 'first_edition_previous_post_link', 10, 3 );
+function first_edition_previous_post_link( $val, $attr, $content = null ) {
+        global $post;
+        $parent_link = '<a class="post-parent" href="' . get_permalink( $post->post_parent ) . '" rel="navigation"><span class="meta-nav">&larr;</span> ' . get_the_title( $post->post_parent ) . '</a>';
+
+        if ( empty( $post->post_parent ) )
+                $parent_link = '<a class="post-parent" href="' . home_url() . '" title="' . esc_attr( get_bloginfo( 'name') ) . '" rel="home"><span class="meta-nav">&larr;</span> Home</a>';
+
+        $updated_link = '<div class="nav-previous">' . $parent_link . '</div>';
+
+        return ( empty( $val ) ) ? $updated_link : $val ;
+}
+
+add_filter( 'next_post_link', 'first_edition_next_post_link', 10, 3 );
+function first_edition_next_post_link( $val, $attr, $content = null ) {
+        global $post;
+        $parent_link = '<a class="post-parent" href="' . get_permalink( $post->post_parent ) . '" rel="navigation">' . get_the_title( $post->post_parent ) . ' <span class="meta-nav">&rarr;</span></a>';
+
+        if ( empty( $post->post_parent ) )
+                $parent_link = '<a class="post-parent" href="' . home_url() . '" title="' . esc_attr( get_bloginfo( 'name') ) . '" rel="home">Home <span class="meta-nav">&rarr;</span></a>';
+
+        $updated_link = '<div class="nav-next">' . $parent_link . '</div>';
+
+        return ( empty( $val ) ) ? $updated_link : $val ;
+}
+
+add_filter( 'previous_image_link', 'first_edition_previous_image_link', 10, 3 );
+function first_edition_previous_image_link( $val, $attr, $content = null ) {
+        global $post;
+        $parent_link = '<a class="post-parent" href="' . get_permalink( $post->post_parent ) . '" rel="navigation">&larr;</a>';
+        return ( empty( $val ) ) ? $parent_link : $val ;
+}
+
+add_filter( 'next_image_link', 'first_edition_next_image_link', 10, 3 );
+function first_edition_next_image_link( $val, $attr, $content = null ) {
+        global $post;
+        $parent_link = '<a class="post-parent" href="' . get_permalink( $post->post_parent ) . '" rel="navigation">&rarr;</a>';
+        return ( empty( $val ) ) ? $parent_link : $val ;
+}
  
 /**
  * Change the default number of gallery columns from 3 to 4.
