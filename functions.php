@@ -109,7 +109,7 @@ function first_edition_next_image_link( $val, $attr, $content = null ) {
 }
  
 /**
- * Change the default number of gallery columns from 3 to 4.
+ * Change the default number of gallery columns to 5.
  * Props Viper007Bond for the gist—you are awesome!
  */
 add_filter( 'shortcode_atts_gallery', 'first_edition_gallery_default_to_four_columns', 10, 3 );
@@ -119,7 +119,7 @@ function first_edition_gallery_default_to_four_columns( $atts, $defaults, $raw_a
                 return $atts;
         }
 
-        $atts['columns'] = 4;
+        $atts['columns'] = 5;
 
         return $atts;
 }
