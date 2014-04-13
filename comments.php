@@ -23,7 +23,6 @@ if ( post_password_required() ) {
 	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
-		<hr />
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-above" class="comment-navigation" role="navigation">
 			<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'first-edition' ); ?></h2>

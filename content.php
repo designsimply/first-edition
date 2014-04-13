@@ -60,4 +60,4 @@
 
 		<?php edit_post_link( __( 'Edit', 'first-edition' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
-</article><hr><!-- #post-## -->
+</article><!-- #post-## -->
