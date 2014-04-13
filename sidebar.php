@@ -7,7 +7,7 @@
 ?>
 	<div id="secondary" class="widget-area" role="complementary">
                <nav id="site-navigation" class="main-navigation" role="navigation">
-                       <h2 class="menu-toggle"><?php _e( 'Menu', 'first-edition' ); ?></h2>
+                       <h3 class="menu-toggle"><?php _e( 'Menu', 'first-edition' ); ?></h3>
                        <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'first-edition' ); ?></a>
 
                        <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
