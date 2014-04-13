@@ -34,7 +34,8 @@ get_header(); ?>
 				endswitch;?>
 
 				<?php if ( is_single() || is_page() || is_attachment ) {
-					first_edition_post_nav();
+					if ( ! is_home() )
+						first_edition_post_nav();
 
 					// If comments are open or we have at least one comment, load up the comment template
 					if ( comments_open() || '0' != get_comments_number() ) :
