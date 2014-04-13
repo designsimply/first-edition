@@ -21,7 +21,7 @@ First-edition is based on Underscores http://underscores.me/, (C) 2012-2014 Auto
 ----------------------------------------------------------------
 1.0 - Typography
 2.0 - Color
-3.0 - Patterns
+3.0 - Layout
 4.0 - Forms
 5.0 - Menus
 6.0 - Accessibility
@@ -54,8 +54,11 @@ a {
 .main-navigation > div > ul > li > .children,
 .entry-meta,
 .entry-footer,
+.nav-links,
+.comments-area,
 .site-footer {
-	font-size: 80%;
+	font-family: "Quattrocento Sans", "Open Sans", sans-serif;
+	font-size: 75%;
 }
 pre {
 	font-family: "Courier 10 Pitch", Courier, monospace;
@@ -104,7 +107,7 @@ a:active,
        color: #542437;
        border-bottom: 1px dotted #444;
 }
-#main {
+.hentry {
        background-color: #fff;
        border: 1px solid #ddd;
 }
@@ -121,8 +124,99 @@ pre.highlight {
 }
 
 /*--------------------------------------------------------------
-3.0 Patterns
+3.0 Layout
 --------------------------------------------------------------*/
+body {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
+.container,
+.site-header {
+	display: flex;
+}
+#primary,
+.site-header .site-branding {
+	flex: 3 0 0;
+}
+#secondary,
+.site-header .search-form {
+	flex: 1 0 0;
+	position: relative;
+}
+#secondary {
+	order: 1;
+}
+#primary {
+	order: 2;
+}
+.site-header .search-form .search-field {
+	max-width: 100%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+.site-header .search-submit {
+       display: none;
+}
+#masthead {
+	padding-bottom: 1em;
+}
+#page {
+       max-width: 960px;
+}
+.page-header {
+	margin: 0 0 1em 1.5em;
+}
+.hentry{
+       border-radius: 5px;
+       padding: 1.5em;
+}
+#secondary ul {
+        padding-left: 1.2em;
+}
+.entry-content > :first-child {
+        margin-top: 0;
+}
+.site-footer {
+	padding: 1.5em 0 3em;
+	float: right;
+	width: 75%;
+}
+hr {
+        background-color: #dfdfdf;
+        border: 0;
+        height: 1px;
+        margin-bottom: 1.5em;
+}
+img {
+        height: auto; /* Make sure images are scaled correctly. */
+        max-width: 100%; /* Adhere to container width. */
+        -ms-interpolation-mode: bicubic;
+        border: 0;
+        vertical-align: middle;
+}
+figure {
+        margin: 0;
+}
+table {
+        margin: 0 0 1.5em;
+        width: 100%;
+}
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .paging-navigation, /* Older / Newer Posts Navigation (always hidden) */
+.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
+        display: none;
+}
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
+.infinity-end.neverending .site-footer {
+        display: block;
+}
+
+/*
 hr {
 	background-color: #ccc;
 	border: 0;
@@ -150,8 +244,8 @@ dd {
 	margin: 0 1.5em 1.5em;
 }
 img {
-	height: auto; /* Make sure images are scaled correctly. */
-	max-width: 100%; /* Adhere to container width. */
+	height: auto;
+	max-width: 100%;
 }
 figure {
 	margin: 0;
@@ -163,7 +257,7 @@ table {
 th {
 	font-weight: bold;
 }
-
+*/
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
 .infinite-scroll .paging-navigation, /* Older / Newer Posts Navigation (always hidden) */
 .infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
@@ -459,7 +553,7 @@ textarea {
 .sticky {
 }
 .hentry {
-	margin: 0 0 1.5em;
+	margin: 0 0 1em;
 }
 .byline,
 .updated {
