@@ -151,9 +151,11 @@ function first_edition_widgets_init() {
 add_action( 'widgets_init', 'first_edition_widgets_init' );
 
 /**
- * Add the bell
+ * Add the bell, shhh. :)
  */
-function first_edition_setup_footer() { ?>
+function first_edition_setup_footer() {
+	$bell = get_theme_mod( 'first_edition_bell', 1 );
+	if ( $bell > 0 ) { ?>
 	<script type="text/javascript">
 		var submitbutton;
 
@@ -165,7 +167,8 @@ function first_edition_setup_footer() { ?>
 			submitbutton.onmouseover = function() { document.getElementById('bell').play(); };
 		}
 	</script>
-<?php }
+	<?php }
+}
 add_action( 'wp_footer', 'first_edition_setup_footer');
 
 /**

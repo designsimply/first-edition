@@ -60,6 +60,18 @@ function first_edition_customize_register( $wp_customize ) {
 		'type' => 'textarea',
 		'priority' => 40,
 	) ) );
+
+	$wp_customize->add_setting( 'first_edition_bell', array(
+		'default' => 1,
+		'capability' => 'edit_theme_options',
+	) );
+
+	$wp_customize->add_control( 'first_edition_bell', array(
+		'label' => __( 'Play a carriage return bell in comments', 'first-edition' ),
+		'section' => 'first_edition_theme_options',
+		'type' =>  'checkbox',
+		'priority' => 60,
+	) );
 }
 add_action( 'customize_register', 'first_edition_customize_register' );
 
