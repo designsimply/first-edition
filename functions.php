@@ -107,13 +107,13 @@ function first_edition_next_image_link( $val, $attr, $content = null ) {
         $parent_link = '<a class="post-parent" href="' . get_permalink( $post->post_parent ) . '" rel="navigation">&rarr;</a>';
         return ( empty( $val ) ) ? $parent_link : $val ;
 }
- 
+
 /**
  * Change the default number of gallery columns to 5.
  * Props Viper007Bond for the gist—you are awesome!
  */
-add_filter( 'shortcode_atts_gallery', 'first_edition_gallery_default_to_four_columns', 10, 3 );
-function first_edition_gallery_default_to_four_columns( $atts, $defaults, $raw_atts ) {
+add_filter( 'shortcode_atts_gallery', 'first_edition_gallery_default_columns', 10, 3 );
+function first_edition_gallery_default_columns( $atts, $defaults, $raw_atts ) {
         // Don't override manually-set number of columns
         if ( ! empty( $raw_atts['columns'] ) ) {
                 return $atts;
