@@ -151,6 +151,24 @@ function first_edition_widgets_init() {
 add_action( 'widgets_init', 'first_edition_widgets_init' );
 
 /**
+ * Add the bell
+ */
+function first_edition_setup_footer() { ?>
+	<script type="text/javascript">
+		var submitbutton;
+
+		submitbutton = document.getElementById('submit');
+		if ( submitbutton ) {
+
+			submitbutton.innerHTML = submitbutton.innerHTML + '<audio id="bell" preload="auto"><source src="<?php echo get_template_directory_uri() . '/inc/bell.wav' ?>"></source></audio>';
+
+			submitbutton.onmouseover = function() { document.getElementById('bell').play(); };
+		}
+	</script>
+<?php }
+add_action( 'wp_footer', 'first_edition_setup_footer');
+
+/**
  * Enqueue scripts and styles.
  */
 function first_edition_scripts() {
