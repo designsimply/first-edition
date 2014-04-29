@@ -36,6 +36,16 @@ function first_edition_customize_register( $wp_customize ) {
 			}
 		}
 	}
+	/**
+	 * Admin styling for color controls.
+	 */
+	class WP_Customize_Color_Style_Control extends WP_Customize_Color_Control {
+		public function enqueue() {
+			wp_enqueue_style( 'first-edition-customizer-controls',
+				get_template_directory_uri() . '/css/customizer-controls.css'
+			);
+		}
+	}
 
 	$wp_customize->add_section( 'first_edition_theme_options', array(
 		'title' => __( 'Theme Options', 'first-edition' ),
@@ -78,8 +88,60 @@ function first_edition_customize_register( $wp_customize ) {
 		'type' =>  'checkbox',
 		'priority' => 60,
 	) );
+
+	$wp_customize->add_section( 'first_edition_theme_colors', array(
+		'title' => __( 'Theme Colors', 'first-edition' ),
+		'priority' => 201,
+	) );
+
+	// Note: background color support is added to after_setup_theme in functions.php
+
+	$wp_customize->add_setting( 'first_edition_colors[link]', array(
+		'default' => '7ca4ad',
+		'type' => 'option',
+		'sanitize_callback' => 'sanitize_hex_color_no_hash',
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+		'transport' => 'postMessage',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Style_Control( $wp_customize, 'first_edition_colors[link]', array(
+		'label'   => __( 'Link Color', 'first-edition' ),
+		'section' => 'colors',
+	) ) );
+
+	$wp_customize->add_setting( 'first_edition_colors[text]', array(
+		'default' => '6b4c29',
+		'type' => 'option',
+		'sanitize_callback' => 'sanitize_hex_color_no_hash',
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+		'transport' => 'postMessage',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'first_edition_colors[text]', array(
+		'label'   => __( 'Text Color', 'first-edition' ),
+		'section' => 'colors',
+	) ) );
 }
 add_action( 'customize_register', 'first_edition_customize_register' );
+
+/**
+ * Add customized colors CSS to the front end.
+ */
+function first_edition_customize_css() {
+	$color = get_option( 'first_edition_colors' );
+	$color['bg'] = get_theme_support( 'custom-background', 'default-color' );
+	?>
+	<style type="text/css">
+		.custom-background { background-color: #<?php echo $color['bg']; ?>; }
+		a { color: #<?php echo $color['link']; ?>; }
+		body, a:hover, a:focus, a:active, .main-navigation ul .current_page_item > a { color: #<?php echo $color['text']; ?>; }
+		.comment-form input[type="submit"]:hover {
+			background: #<?php echo $color['text']; ?>;
+			color: #<?php echo $color['bg']; ?>;
+		}
+	</style>
+<?php }
+add_action( 'wp_head', 'first_edition_customize_css' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
@@ -89,3 +151,4 @@ function first_edition_customize_preview_js() {
 		array( 'customize-preview' ), '20130508', true );
 }
 add_action( 'customize_preview_init', 'first_edition_customize_preview_js' );
+
