@@ -33,4 +33,16 @@
 			}
 		} );
 	} );
+	// Logo
+	wp.customize( 'first_edition_logo', function( value ) {
+		value.bind( function( to ) {
+
+			if ( '' != to ) {
+				$( '.site-branding' ).css( {
+					'background': 'url(' + to + ') no-repeat',
+					'padding-left': '90px'
+				} );
+			}
+		} );
+	} );
 } )( jQuery );

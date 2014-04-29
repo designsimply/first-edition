@@ -39,8 +39,18 @@ function first_edition_customize_register( $wp_customize ) {
 
 	$wp_customize->add_section( 'first_edition_theme_options', array(
 		'title' => __( 'Theme Options', 'first-edition' ),
+		'description' => 'Use a logo that is 75 x 75 pixels or smaller.',
 		'priority' => 200,
 	) );
+
+	$wp_customize->add_setting( 'first_edition_logo' );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'first_edition_logo', array(
+		'label' => __( 'Logo', 'first-edition' ),
+		'section' => 'first_edition_theme_options',
+		'settings' => 'first_edition_logo',
+		'priority' => 20,
+	) ) );
 
 	$wp_customize->add_setting( 'first_edition_footer_text', array(
 		'default' => sprintf(
@@ -49,22 +59,18 @@ function first_edition_customize_register( $wp_customize ) {
 			'<a href="http://underscores.me/">Underscores.me</a>',
 			'<a href="http://wordpress.org/">WordPress</a>'
 		),
-		'capability' => 'edit_theme_options',
 		'sanitize_callback' => 'wp_kses_post',
 		'sanitize_callback' => 'balanceTags',
 	) );
 
-	$wp_customize->add_control( new WP_Customize_Textarea_Control($wp_customize, 'first_edition_footer_text', array(
+	$wp_customize->add_control( new WP_Customize_Textarea_Control( $wp_customize, 'first_edition_footer_text', array(
 		'label' => __( 'Footer Text', 'first-edition' ),
 		'section' => 'first_edition_theme_options',
 		'type' => 'textarea',
 		'priority' => 40,
 	) ) );
 
-	$wp_customize->add_setting( 'first_edition_bell', array(
-		'default' => 1,
-		'capability' => 'edit_theme_options',
-	) );
+	$wp_customize->add_setting( 'first_edition_bell', array( 'default' => 1,) );
 
 	$wp_customize->add_control( 'first_edition_bell', array(
 		'label' => __( 'Play a carriage return bell in comments', 'first-edition' ),

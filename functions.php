@@ -109,7 +109,7 @@ function first_edition_next_image_link( $val, $attr, $content = null ) {
 }
 
 /**
- * Change the default number of gallery columns to 5.
+ * Change the default number of gallery columns.
  * Props Viper007Bond for the gist—you are awesome!
  */
 add_filter( 'shortcode_atts_gallery', 'first_edition_gallery_default_columns', 10, 3 );
@@ -134,6 +134,21 @@ function first_edition_prepend_attachment() {
 
         return $output;
 }
+
+/**
+ * Add styles from the customizer controls.
+ */
+function first_edition_customizer_css() {
+	$logo = get_theme_mod( 'first_edition_logo' );
+	if ( '' != $logo ) { ?>
+		<style type="text/css">
+			.site-branding {
+				background: url('<?php echo $logo; ?>') no-repeat;
+				padding-left: 90px;
+		</style>
+    <?php }
+}
+add_action( 'wp_head', 'first_edition_customizer_css' );
 
 /**
  * Register widgetized area and update sidebar with default widgets.
