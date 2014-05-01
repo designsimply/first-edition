@@ -84,7 +84,8 @@ function first_edition_customize_register( $wp_customize ) {
 			'<a href="http://underscores.me/">Underscores.me</a>',
 			'<a href="http://wordpress.org/">WordPress</a>'
 		),
-		'sanitize_callback' => 'wp_kses_post',
+		//'sanitize_callback' => 'wp_kses_post',
+		'sanitize_callback' => 'wp_filter_kses',
 		'sanitize_callback' => 'balanceTags',
 	) );
 
