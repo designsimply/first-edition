@@ -626,6 +626,37 @@ p.comment-notes {
 .gallery-columns-9 .gallery-caption {
 	display: none;
 }
+.attachment .hentry {
+	background: inherit;
+	padding: 1em 0 0 0;
+}
+.attachment .entry-header { margin: 0.4em 2em; }
+.attachment #masthead { display: none; }
+.attachment nav { position: relative; }
+.attachment .previous a {
+	top: 0;
+	left: 0;
+	display: block;
+	position: absolute;
+}
+.attachment .next a {
+	top: 0;
+	right: 0;
+	display: block;
+	position: absolute;
+}
+.attachment .previous a,
+.attachment .next a {
+	border: 2px solid;
+	border-radius: 50%;
+	padding: 5px 9px;
+	text-align: center;
+	text-decoration: none;
+}
+.attachment .previous a:hover,
+.attachment .next a:hover {
+	border-color: inherit;
+}
 .page-content img.wp-smiley,
 .entry-content img.wp-smiley,
 .comment-content img.wp-smiley {
