@@ -36,13 +36,9 @@ First-edition is based on Underscores http://underscores.me/, (C) 2012-2014 Auto
 /*--------------------------------------------------------------
 1.0 Typography
 --------------------------------------------------------------*/
-body,
-button,
-input,
-select,
-textarea {
+body {
 	font-family: "Quattrocento", serif;
-	line-height: 1.5;
+	line-height: 1.6;
 }
 h1, h2, h3, h4, h5, h6 {
 	font-family: "Quattrocento Sans", "Open Sans", sans-serif;
@@ -65,6 +61,8 @@ a {
 .site-description {
         font-weight: normal;
 }
+.comment-form input,
+.comment-form textarea,
 pre {
 	font-family: "Courier 10 Pitch", Courier, monospace;
 	padding: 1.2em;
@@ -112,9 +110,14 @@ a:active,
        color: #542437;
        border-bottom: 1px dotted #444;
 }
-.hentry {
-       background-color: #fff;
-       border: 1px solid #ddd;
+.comment-form input[type="submit"]:hover {
+	background: #542437;
+	color: #f5f0df;
+}
+.hentry,
+.site-header .search-form .search-field {
+       background-color: rgba(255,255,255,0.75);
+       border: 1px solid rgba(221,221,221,0.85);
 }
 .site-footer {
        opacity: 0.67;
@@ -163,12 +166,13 @@ body {
 	position: absolute;
 	bottom: 0;
 	right: 0;
+	padding: .3em .6em;
 }
 .site-header .search-submit {
        display: none;
 }
 #masthead {
-	padding-bottom: 1em;
+	padding: .5em 0 1.5em 0;
 }
 #page {
        max-width: 960px;
@@ -232,46 +236,13 @@ textarea {
 	margin: 0; /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
 	vertical-align: baseline; /* Improves appearance and consistency in all browsers */
 	*vertical-align: middle; /* Improves appearance and consistency in IE6/IE7 */
+	background: inherit;
+	color: inherit;
+	border-radius: 4px;
 }
-button,
-input[type="button"],
-input[type="reset"],
 input[type="submit"] {
-	border: 1px solid #ccc;
-	border-color: #ccc #ccc #bbb #ccc;
-	border-radius: 3px;
-	background: #e6e6e6;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
-	color: rgba(0, 0, 0, .8);
 	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
 	-webkit-appearance: button; /* Corrects inability to style clickable 'input' types in iOS */
-	font-size: 12px;
-	font-size: 1.2rem;
-	line-height: 1;
-	padding: .6em 1em .4em;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-button:hover,
-input[type="button"]:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
-	border-color: #ccc #bbb #aaa #bbb;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
-}
-button:focus,
-input[type="button"]:focus,
-input[type="reset"]:focus,
-input[type="submit"]:focus,
-button:active,
-input[type="button"]:active,
-input[type="reset"]:active,
-input[type="submit"]:active {
-	border-color: #aaa #bbb #bbb #bbb;
-	box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-input[type="checkbox"],
-input[type="radio"] {
-	padding: 0; /* Addresses excess padding in IE8/9 */
 }
 input[type="search"] {
 	-webkit-appearance: textfield; /* Addresses appearance set to searchfield in S5, Chrome */
@@ -282,41 +253,79 @@ input[type="search"] {
 input[type="search"]::-webkit-search-decoration { /* Corrects inner padding displayed oddly in S5, Chrome on OSX */
 	-webkit-appearance: none;
 }
-button::-moz-focus-inner,
-input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly in FF3/4 www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ */
-	border: 0;
-	padding: 0;
-}
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-textarea {
-	color: #666;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-}
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-textarea:focus {
-	color: #111;
-}
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"] {
-	padding: 3px;
+input[type="checkbox"],
+input[type="radio"] {
+	padding: 0; /* Addresses excess padding in IE8/9 */
 }
 textarea {
 	overflow: auto; /* Removes default vertical scrollbar in IE6/7/8/9 */
-	padding-left: 3px;
 	vertical-align: top; /* Improves readability and alignment in all browsers */
-	width: 98%;
+}
+.comment-form {
+	padding-top: 1.5em;
+}
+.comment-form > p.comment-form-comment {
+	clear: left;
+}
+.comment-form > p.comment-form-author,
+.comment-form > p.comment-form-email,
+.comment-form > p.comment-form-url {
+	width: 33%;
+	float: left;
+	padding-top: 1%;
+}
+.comment-form > p.comment-form-email,
+.comment-form > p.comment-form-url {
+	border-left: 1px solid;
+}
+.comment-form > p.comment-form-author label,
+.comment-form > p.comment-form-email label,
+.comment-form > p.comment-form-url label {
+	padding-left: 2%;
+}
+.comment-form .logged-in-as {
+	text-align: right;
+}
+.comment-form > p {
+	position: relative;
+	display: block;
+}
+.comment-form > p > label {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 1%;
+	width: 100%;
+	font-size: 80%;
+}
+.comment-form > p > input,
+.comment-form > p > textarea {
+	border: none;
+	border-bottom: 1px solid;
+	border-radius: 0;
+	padding: 2% 3%;
+	margin-top: .6em;
+	display: inline-block;
+	box-sizing: border-box;
+	outline: none;
+	width: 100%;
+}
+.comment-form > p > textarea {
+	padding: 2% 1%;
+	width: 100%;
+	max-height: 2.5em;
+}
+.comments-area #reply-title,
+p.comment-notes {
+	display: none;
+}
+.comment-form input[type="submit"] {
+	font-size: 100%;
+	padding: .5em 1.5em;
+	border: 1px solid;
+	border-radius: 4px;
+	width: auto;
+	float: right;
 }
 
 /*--------------------------------------------------------------
@@ -500,6 +509,10 @@ textarea {
         vertical-align: baseline;
 }
 .comment p {
+	margin: 0;
+	padding: 0;
+}
+.comment > p {
         display: inline;
 }
 .comment-content a {
