@@ -1,0 +1,15 @@
+.wp-picker-container,
+.wp-color-result {
+	width: 100%;
+}
+
+.wp-color-result {
+	padding: 0 0 2em 0;
+
+}
+
+.wp-color-result:after,
+.wp-color-result:hover:after {
+	border-radius: 2px 2px 0 0;
+	border: none;
+}
