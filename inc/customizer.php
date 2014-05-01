@@ -175,7 +175,9 @@ add_action( 'customize_register', 'first_edition_customize_register' );
 function first_edition_customize_css() {
 	global $protocol, $selected_fonts;
 	$color = get_option( 'first_edition_colors' );
+	$bg = get_theme_mod( 'background_color' );
 	$customized_css = '<style type="text/css" id="customizer-css">'
+		. "\n.custom-background { background-color: #$bg; }"
 		. "\n" . 'a { color: #' . $color['link'] . '; }'
 		. "\n" . 'body, a:hover, a:focus, a:active, .main-navigation ul .current_page_item > a { color: #' . $color['text'] . '; }'
 		. "\n" . '.comment-form input[type="submit"]:hover { background: #' . $color['text'] . '; color: #' . $color['bg'] . '; }';
