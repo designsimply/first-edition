@@ -45,6 +45,8 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
+			<?php first_edition_paging_nav(); ?>
+
 		<?php else : ?>
 
 			<?php get_template_part( 'content', 'none' ); ?>
