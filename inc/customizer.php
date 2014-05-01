@@ -175,57 +175,52 @@ add_action( 'customize_register', 'first_edition_customize_register' );
 function first_edition_customize_css() {
 	global $protocol, $selected_fonts;
 	$color = get_option( 'first_edition_colors' );
-	$color['bg'] = get_theme_support( 'custom-background', 'default-color' );
-	?>
-	<style type="text/css" id="customizer-css">
-		.custom-background { background-color: #<?php echo $color['bg']; ?>; }
-		a { color: #<?php echo $color['link']; ?>; }
-		body, a:hover, a:focus, a:active, .main-navigation ul .current_page_item > a { color: #<?php echo $color['text']; ?>; }
-		.comment-form input[type="submit"]:hover {
-			background: #<?php echo $color['text']; ?>;
-			color: #<?php echo $color['bg']; ?>;
-		}
-		<?php $font = get_option( 'first_edition_font_pair' );
-		if ( '' != $font ) {
-		switch ( $font ) {
-			case 'pair1':
-				wp_enqueue_style( 'lustria', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['lustria'] );
-				wp_enqueue_style( 'lato', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['lato'] );
-				echo  "h1,h2,h3,h4,h5,h6 { font-family: 'Lustria', serif; }";
-				echo  "body { font-family: 'Lato', 'Open Sans', sans-serif; font-weight: 300; }";
-				break;
+	$customized_css = '<style type="text/css" id="customizer-css">'
+		. "\n" . 'a { color: #' . $color['link'] . '; }'
+		. "\n" . 'body, a:hover, a:focus, a:active, .main-navigation ul .current_page_item > a { color: #' . $color['text'] . '; }'
+		. "\n" . '.comment-form input[type="submit"]:hover { background: #' . $color['text'] . '; color: #' . $color['bg'] . '; }';
+	$font = get_option( 'first_edition_font_pair' );
+	if ( '' != $font ) {
+	switch ( $font ) {
+		case 'pair1':
+			wp_enqueue_style( 'lustria', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['lustria'] );
+			wp_enqueue_style( 'lato', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['lato'] );
+			$customized_css .= "\nh1,h2,h3,h4,h5,h6 { font-family: 'Lustria', serif; }";
+			$customized_css .= "\nbody { font-family: 'Lato', 'Open Sans', sans-serif; font-weight: 300; }";
+			break;
 
-			case 'pair2':
-				wp_enqueue_style( 'ubutnu', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['ubutnu'] );
-				wp_enqueue_style( 'lora', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['lora'] );
-				echo "h1,h2,h3,h4,h5,h6 { font-family: 'Ubuntu', serif; }";
-				echo "body { font-family: 'Lora', 'Open Sans', sans-serif; }";
-				break;
+		case 'pair2':
+			wp_enqueue_style( 'ubutnu', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['ubutnu'] );
+			wp_enqueue_style( 'lora', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['lora'] );
+			$customized_css .= "\nh1,h2,h3,h4,h5,h6 { font-family: 'Ubuntu', serif; }";
+			$customized_css .= "\nbody { font-family: 'Lora', 'Open Sans', sans-serif; }";
+			break;
 
-			case 'pair3':
-				wp_enqueue_style( 'raleway', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['raleway'] );
-				wp_enqueue_style( 'merriweather', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['merriweather'] );
-				echo "h1,h2,h3,h4,h5,h6 { font-family: 'Raleway', serif; } ";
-				echo "body { font-family: 'Merriweather', 'Open Sans', sans-serif; font-weight: 300; }";
-				break;
+		case 'pair3':
+			wp_enqueue_style( 'raleway', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['raleway'] );
+			wp_enqueue_style( 'merriweather', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['merriweather'] );
+			$customized_css .= "\nh1,h2,h3,h4,h5,h6 { font-family: 'Raleway', serif; } ";
+			$customized_css .= "\nbody { font-family: 'Merriweather', 'Open Sans', sans-serif; font-weight: 300; }";
+			break;
 
-			case 'pair4':
-				wp_enqueue_style( 'roboto-slab', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['roboto-slab'] );
-				wp_enqueue_style( 'roboto', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['roboto'] );
-				echo "h1,h2,h3,h4,h5,h6 { font-family: 'Roboto Slab', serif; }";
-				echo "body { font-family: 'Roboto', 'Open Sans', sans-serif; font-weight: 300; }";
-				break;
+		case 'pair4':
+			wp_enqueue_style( 'roboto-slab', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['roboto-slab'] );
+			wp_enqueue_style( 'roboto', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['roboto'] );
+			$customized_css .= "\nh1,h2,h3,h4,h5,h6 { font-family: 'Roboto Slab', serif; }";
+			$customized_css .= "\nbody { font-family: 'Roboto', 'Open Sans', sans-serif; font-weight: 300; }";
+			break;
 
-			case 'pair5':
-				wp_enqueue_style( 'quattrocento', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['quattrocento'] );
-				wp_enqueue_style( 'quattrocento-sans', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['quattrocento-sans'] );
-				echo "h1,h2,h3,h4,h5,h6 { font-family: 'Quattrocento', serif; }";
-				echo "body { font-family: 'Quattrocento Sans', 'Open Sans', sans-serif; font-weight: 300; }";
-				break;
-		} } ?>
-	</style>
-<?php }
-add_action( 'wp_head', 'first_edition_customize_css' );
+		case 'pair5':
+			wp_enqueue_style( 'quattrocento', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['quattrocento'] );
+			wp_enqueue_style( 'quattrocento-sans', "$protocol://fonts.googleapis.com/css?family=".$selected_fonts['quattrocento-sans'] );
+			$customized_css .= "\nh1,h2,h3,h4,h5,h6 { font-family: 'Quattrocento', serif; }";
+			$customized_css .= "\nbody { font-family: 'Quattrocento Sans', 'Open Sans', sans-serif; font-weight: 300; }";
+			break;
+	} }
+	$customized_css .= "\n</style>\n";
+	wp_add_inline_style( 'first-edition-style', $customized_css );
+}
+add_action( 'wp_enqueue_scripts', 'first_edition_customize_css' );
 
 // Don't load the default fonts enqueued in functions.ph if they are going to be loaded by first_edition_customize_css()
 function first_edition_deregister_styles() {
