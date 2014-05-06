@@ -135,34 +135,6 @@ pre.highlight {
 3.0 Layout
 --------------------------------------------------------------*/
 body {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	-ms-word-wrap: break-word;
-	word-wrap: break-word;
-}
-.container,
-.site-header {
-	display: flex;
-}
-#primary,
-.site-header .site-branding {
-	flex: 3 0 0;
-}
-#secondary,
-.site-header .search-form {
-	flex: 1 0 0;
-	position: relative;
-}
-#secondary {
-	order: 1;
-	min-width: 180px;
-}
-#primary {
-	order: 2;
-}
-body {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
