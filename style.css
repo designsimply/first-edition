@@ -98,20 +98,20 @@ sub {
 --------------------------------------------------------------*/
 body {
        background: #f5f0df;
-       color: #542437;
+       color: #634848;
 }
 a {
-       color: #c02942;
+	color: #7ca4ad;
 }
 a:hover,
 a:focus,
 a:active,
 .main-navigation ul .current_page_item > a {
-       color: #542437;
+       color: #634848;
        border-bottom: 1px dotted #444;
 }
 .comment-form input[type="submit"]:hover {
-	background: #542437;
+	background: #634848;
 	color: #f5f0df;
 }
 .hentry,
