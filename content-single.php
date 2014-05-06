@@ -10,7 +10,7 @@
 
 		<div class="entry-meta">
                         <?php first_edition_posted_on(); ?>
-                        <?php edit_post_link( __( 'edit', 'first-edition' ), '{', '}' ); ?>
+                        <?php edit_post_link( __( 'Edit', 'first-edition' ), '&bull; ' ); ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 

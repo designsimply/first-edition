@@ -47,7 +47,10 @@
 				/* translators: used between list items, there is a space after the comma */
 				$tags_list = get_the_tag_list( '', __( ', ', 'first-edition' ) );
 				if ( $tags_list ) :
+				if ( $categories_list && $tags_list )
+					echo '<span class="sep">,</span>';
 			?>
+
 			<span class="tags-links">
 				<?php printf( __( '%1$s', 'first-edition' ), $tags_list ); ?>
 			</span>
@@ -58,6 +61,6 @@
 		<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'first-edition' ), __( '1 Comment', 'first-edition' ), __( '% Comments', 'first-edition' ) ); ?></span>
 		<?php endif; ?>
 
-		<?php edit_post_link( __( 'Edit', 'first-edition' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php edit_post_link( __( 'Edit', 'first-edition' ), '<span class="edit-link">&bull; ', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
