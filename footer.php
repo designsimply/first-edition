@@ -14,7 +14,11 @@ $footer_text = get_theme_mod( 'first_edition_footer_text' );
 			<?php if ( '' != $footer_text ) {
 				echo $footer_text;
 			} else {
-				printf( __( '%1$s was made with %2$s for %3$s', 'first-edition' ), '<a href="http://designsimply.com/wordpress/theme/first-edition/" rel="designer">First Edition WordPress Theme</a>', '<a href="http://underscores.me/" rel="inspiration">Underscores.me</a>', '<a href="http://wordpress.org/" rel="generator">WordPress</a>' );
+				printf( esc_html__( '%1$s was made with %2$s for %3$s', 'first-edition' ),
+					'<a href="http://designsimply.com/wordpress/theme/first-edition/" rel="author">First Edition WordPress Theme</a>',
+					'<a href="http://underscores.me/">Underscores.me</a>',
+					'<a href="http://wordpress.org/">WordPress</a>'
+				);
 			} ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
@@ -24,6 +28,5 @@ $footer_text = get_theme_mod( 'first_edition_footer_text' );
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
 </body>
 </html>
