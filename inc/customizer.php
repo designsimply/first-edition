@@ -196,7 +196,8 @@ function first_edition_customize_css() {
 	$selected_fonts = first_edition_font_list();
 	$color = get_option( 'first_edition_colors' );
 	$bg = get_theme_mod( 'background_color' );
-	$customized_css = 'a { color: #' . $color['link'] . '; }'
+	$customized_css = '.custom-background { background-color: #' . $bg . '; }'
+		. "\n" . 'a { color: #' . $color['link'] . '; }'
 		. "\n" . 'body, a:hover, a:focus, a:active, .main-navigation ul .current_page_item > a { color: #' . $color['text'] . '; }'
 		. "\n" . '.comment-form input[type="submit"]:hover { background: #' . $color['text'] . '; color: #' . $bg . '; }';
 	$font = get_option( 'first_edition_font_pair' );
