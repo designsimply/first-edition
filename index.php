@@ -33,7 +33,7 @@ get_header(); ?>
 						break;
 				endswitch;?>
 
-				<?php if ( is_single() || is_page() || is_attachment ) {
+				<?php if ( is_single() || is_page() || is_attachment() ) {
 					if ( ! is_home() )
 						first_edition_post_nav();
 
