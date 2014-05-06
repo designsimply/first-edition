@@ -162,6 +162,62 @@ body {
 #primary {
 	order: 2;
 }
+body {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -ms-word-wrap: break-word;
+        word-wrap: break-word;
+}
+.container,
+.site-header {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+}
+#primary,
+.site-header .site-branding {
+        -webkit-box-flex: 3;
+        -webkit-flex: 3 0 0;
+        -ms-flex: 3 0 0;
+        flex: 3 0 0;
+}
+#secondary,
+.site-header .search-form {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1 0 0;
+        -ms-flex: 1 0 0;
+        flex: 1 0 0;
+        position: relative;
+}
+#secondary {
+        -webkit-box-ordinal-group: 2;
+        -webkit-order: 1;
+        -ms-flex-order: 1;
+        order: 1;
+        min-width: 180px;
+}
+#primary {
+        -webkit-box-ordinal-group: 3;
+        -webkit-order: 2;
+        -ms-flex-order: 2;
+        order: 2;
+}
 .site-header .search-form .search-field {
 	max-width: 100%;
 	position: absolute;
