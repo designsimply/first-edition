@@ -30,6 +30,9 @@ function first_edition_setup() {
 	 */
 	load_theme_textdomain( 'first-edition', get_template_directory() . '/languages' );
 
+	// This theme styles the visual editor with editor-style.css to match the theme style.
+	add_editor_style( 'css/editor-style.css' );
+
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
