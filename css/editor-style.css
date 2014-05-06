@@ -22,13 +22,11 @@ html .mceContentBody {
 }
 
 body {
-	font-family: "Quattrocento", serif;
 	line-height: 1.6;
 	vertical-align: baseline;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Quattrocento Sans", "Open Sans", sans-serif;
 	margin: 0;
 }
 
@@ -72,17 +70,9 @@ sub {
 /*--------------------------------------------------------------
 2.0 Color
 --------------------------------------------------------------*/
-body {
-       color: #542437;
-}
-a {
-       color: #c02942;
-}
 a:hover,
 a:focus,
 a:active,
-.main-navigation ul .current_page_item > a {
-       color: #542437;
        border-bottom: 1px dotted #444;
 }
 pre {
