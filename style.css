@@ -9,7 +9,7 @@ License: GNU General Public License
 License URI: license.txt
 Text Domain: first-edition
 Domain Path: /languages/
-Tags: custom-header, custom-menu, editor-style, featured-images, fixed-width, two-column, writing
+Tags: custom-header, custom-menu, editor-style
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -157,6 +157,7 @@ body {
 }
 #secondary {
 	order: 1;
+	min-width: 180px;
 }
 #primary {
 	order: 2;
@@ -500,7 +501,6 @@ p.comment-notes {
 .comment-list,
 .comment-list ul {
 	list-style-type: none;
-	-webkit-padding-start: 16px;
 }
 .comment-list {
 	padding-left: 0;
@@ -628,6 +628,7 @@ p.comment-notes {
 }
 .attachment .hentry {
 	background: inherit;
+	border: none;
 	padding: 1em 0 0 0;
 }
 .attachment .entry-header { margin: 0.4em 2em; }
@@ -647,15 +648,7 @@ p.comment-notes {
 }
 .attachment .previous a,
 .attachment .next a {
-	border: 2px solid;
-	border-radius: 50%;
-	padding: 5px 9px;
-	text-align: center;
-	text-decoration: none;
-}
-.attachment .previous a:hover,
-.attachment .next a:hover {
-	border-color: inherit;
+	font-size: 1.5em;
 }
 .page-content img.wp-smiley,
 .entry-content img.wp-smiley,
