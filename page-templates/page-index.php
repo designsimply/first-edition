@@ -63,7 +63,7 @@ get_header(); ?>
 					$toc .= '<a href="#' . $letter_group . '">' . $letter_group . '</a> ';
 					$output .= '<ul id="' . $letter_group . '"><li>' . $letter_group . '</li>';
 					foreach ($list as $id => $title ) {
-						$url = attribute_escape( get_page_link( $id ) );
+						$url = esc_attr( get_page_link( $id ) );
 						$output .= '<li><a href="' . $url . '">' . $title . '</a></li>';
 					}
 					$output .= '</ul>';

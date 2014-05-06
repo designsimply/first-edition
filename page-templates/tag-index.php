@@ -64,7 +64,7 @@ get_header(); ?>
 						$toc .= '<a href="#' . $letter_group . '">' . $letter_group . '</a> ';
 						$output .= '<ul id="' . $letter_group . '"><li>' . $letter_group . '</li>';
 						foreach ($list as $id => $item ) {
-							$url = attribute_escape( get_tag_link( $id ) );
+							$url = esc_attr( get_tag_link( $id ) );
 							$output .= '<li><a href="' . $url . '">' . $item[0] . '</a> ';
 							$output .= '<span>' . intval( $item[1] ) . '</span></li>';
 						}
