@@ -142,7 +142,7 @@ function first_edition_customize_register( $wp_customize ) {
 
 	// Enqueue all the pre-selected fonts so they display lightning fast for previews.
 	foreach ( $selected_fonts as $name => $query_string )
-		wp_enqueue_style ( $name, "//fonts.googleapis.com/css?family=$query_string" );
+		wp_enqueue_style ( $name, '//fonts.googleapis.com/css?family=' . esc_url( $query_string ) );
 
 	$wp_customize->add_section( 'first_edition_fonts', array(
 		'title' => esc_html__( 'Fonts', 'first-edition' ),
