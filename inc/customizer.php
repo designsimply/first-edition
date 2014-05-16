@@ -193,7 +193,7 @@ function first_edition_customize_css() {
 	$customized_css = '.custom-background { background-color: #' . esc_attr( $bgcolor ) . '; }'
 		. "\n" . 'a { color: #' . $color['link'] . '; }'
 		. "\n" . 'body, a:hover, a:focus, a:active, .main-navigation ul .current_page_item > a { color: #' . esc_attr( $color['text'] ) . '; }'
-		. "\n" . '.comment-form input[type="submit"]:hover { background: #' . $color['text'] . '; color: #' . esc_attr( $bgcolor) . '; }';
+		. "\n" . '.comment-form input[type="submit"]:hover { background: #' . esc_attr( $color['text'] ) . '; color: #' . esc_attr( $bgcolor) . '; }';
 	$font = get_option( 'first_edition_font_pair' );
 	if ( '' != $font ) {
 	switch ( $font ) {
